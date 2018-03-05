@@ -25,13 +25,18 @@ print("Your name is \(name)")
  - Example:
  "Your name is Joe Smith, your age is 35, and your height is 175cm."
  */
-
+var jacksonName = "Jackson"
+var jacksonAge = 45
+var jacksonHeight = "6ft"
+let jacksonDescription = "Your name is \(jacksonName), your age is \(jacksonAge), and your height is \(jacksonHeight)."
 
 /*:
  - Experiment:
  Math calculations can be included within the "`\()`" such as adding two variables together. Try printing out a sentence using string interpolation and include a calculation.
  */
-
+var tableHeight = 3.5
+var screenHeight = 1.5
+var screenOnTableHeight = "Your table is \(tableHeight) ft tall, your screen is \(screenHeight) ft tall, the top of your screen is \(tableHeight + screenHeight) ft."
 /*:
  ## Control Flow
 
@@ -51,7 +56,14 @@ if myConditional {
  - Experiment:
   Try creating your own 'if' statement that determines whether a given number is even, odd or zero.
  */
-
+let testNumber = 3
+if testNumber == 0 {
+    print("It's zero!")
+} else if testNumber % 2 == 0 {
+    print("It's even!")
+} else {
+    print("It's odd!")
+}
 
 /*:
  - Experiment:
@@ -59,7 +71,7 @@ if myConditional {
  Try changing the 'vegetable' variable to test the conditions and figure out how they work.
  */
 
-let vegetable = "red pepper"
+let vegetable = "purple pepper"
 var vegetableComment = ""
 switch vegetable {
 case "celery":
@@ -77,21 +89,28 @@ default:
  - Callout(Challenge):
  Create an if/else statement to print out the grammatically correct description of the number of bicycles there are. Declare a 'bicycleCount' variable with any number you wish then cover the conditions for zero bicycles, 1 bicycle, and more than 1 bicycle. ie: 'There are zero bicycles', 'There is 1 bicycle', 'There are 20 bicycles'
  */
-
-
+// made type UInt because 'negative bicycles' doesn't make sense and it will allow switch to be exhaustive with one less case
+let bicycleAmount: UInt = 5
+var bicycleComment = ""
+if bicycleAmount == 0 {
+    bicycleComment = "There are no bicycles"
+} else if bicycleAmount == 1 {
+    bicycleComment =  "There is one bicycle"
+} else {
+    bicycleComment = "There are \(bicycleAmount) bicycles"
+}
 /*:
  - Callout(Challenge):
  Rewrite the above Challenge as a switch statement
  */
+var bicycleCommentTwo = ""
+switch bicycleAmount {
+case 0:
+    bicycleCommentTwo = "There are no bicycles"
+case 1:
+    bicycleCommentTwo = "There is one bicycle"
+default:
+    bicycleCommentTwo = "There are \(bicycleAmount) bicycles"
+}
 
 
-/*:
- - Callout(Challenge):
- Write a conditional 'if' statement to determine whether a given year is considered a leap year or not.
- Here are the rules to determine leap year:
- - The year can be evenly divided by 4 = Is Leap Year
- - If the year can be evenly divided by 100 = Is NOT a Leap Year, unless;
- - The year is also evenly divisible by 400 = Is Leap Year
- */
-
-//: [Next](@next)
