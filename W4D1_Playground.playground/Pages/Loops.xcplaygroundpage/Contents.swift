@@ -29,13 +29,19 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
-
+// 2...5 range has 4 steps : [2, 3, 4, 5]
+// 2..<5 range has 3 steps: [2, 3, 4]
 
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
-
+//let comparison
+for pet in pets {
+    if pet == "pig" {
+        print("\(pet)")
+    }
+}
 
 /*:
  - Experiment:
