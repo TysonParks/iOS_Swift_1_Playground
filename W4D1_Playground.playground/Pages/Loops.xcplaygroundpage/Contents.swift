@@ -37,9 +37,9 @@ for i in 2...5 {
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
 //let comparison
-for pet in pets {
+for (index, pet) in pets.enumerated() {
     if pet == "pig" {
-        print("\(pet)")
+        print(index)
     }
 }
 
@@ -47,7 +47,11 @@ for pet in pets {
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
-
+var randomNumbers = [3, 45, 96, 5, 2, 14]
+for number in randomNumbers {
+    let newNumber = number + 1
+    print(newNumber)
+}
 
 /*:
  - Experiment:
@@ -63,15 +67,21 @@ let interestingNumbers = [
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
+
 var largest = 0
+var smallest = 50
 for (_, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
         }
+        if number < smallest {
+        smallest = number
+        }
     }
 }
 print(largest)
+print(smallest)
 
 
 /*:
@@ -79,8 +89,14 @@ print(largest)
  Given a number `N`, from 0 to `N`, add up all the odd numbers and print out the result.
  ie: N = 5, 1+3+5 = 9
  */
-
-
+var N = 9
+var newSum = 0
+for numberN in 0...N {
+    if N % 2 == 1 {
+        newSum += numberN
+    }
+}
+print(newSum)
 /*:
  - Callout(Challenge):
  Given the following array of numbers, determine the frequency of each number using a for loop.
@@ -95,5 +111,11 @@ print(largest)
  */
 
 let numberArray = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
-
+let uniqueNumDict = numberArray.reduce(into: [:]) { counts, number in
+    counts[number, default: 0] += 1
+}
+print(uniqueNumDict)
+for (_, counts) in uniqueNumDict.enumerated() {
+    print("\(counts.key) occurs \(counts.value) times")
+}
 //: [Next](@next)
