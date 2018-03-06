@@ -12,8 +12,9 @@
  */
 class ShapeClass {
     var numberOfSides = 0
+    var name = ""
     func description() -> String {
-        return "A shape with \(numberOfSides) sides."
+        return "A \(name) with \(numberOfSides) sides."
     }
 }
 /*:
@@ -36,8 +37,10 @@ struct ShapeStruct {
  - Experiment:
  Try creating an instance of the ShapeClass. We can do this by writing the class name then putting parentheses '()' after the class name. Assign it to a declared variable and try setting the variables 'numberofSides' and 'name' and calling the 'description' method.
  */
-
-
+var square = ShapeClass()
+square.name = "square"
+square.numberOfSides = 4
+square.description()
 /*:
  Our ShapeClass is looking good but it is missing something important. We need an initializer to set up the class when an instance is created. We are going to create another class very similar to ShapeClass but this time, we will add the initializer.
  */
@@ -50,8 +53,13 @@ class NamedShapeClass {
         self.name = name
     }
     
+    init(name: String, numberOfSides: Int) {
+        self.name = name
+        self.numberOfSides = numberOfSides
+    }
+    
     func description() -> String {
-        return "A shape with \(numberOfSides) sides."
+        return "A \(name) with \(numberOfSides) sides."
     }
 }
 
@@ -59,7 +67,8 @@ class NamedShapeClass {
  - Experiment:
  Add another initializer to our 'NamedShapeClass'. Have this initializer take in 'name' and 'numberOfSides' as its parameters. Then test it out by creating an instance of 'NamedShapeClass'.
  */
-
+var pentagon = NamedShapeClass(name: "pentagon", numberOfSides: 5)
+pentagon.description()
 
 /*:
  - Callout(Challenge):
@@ -72,9 +81,27 @@ class NamedShapeClass {
  */
 
 class Square : NamedShapeClass {
+    var sideLength: Int = 0
     
+    init(name:String, sideLength:Int) {
+        super.init(name:name)
+        self.numberOfSides = 4
+        self.sideLength = sideLength
+    }
+    
+    func area() -> Int {
+        return (sideLength * sideLength)
+    }
+    
+    override func description() -> String {
+        return "A square named \(name) with 4 sides of length \(sideLength)"
+    }
 }
 
+
+var newSquare = Square(name: "Right Angle Bojangles", sideLength: 7)
+newSquare.area()
+newSquare.description()
 /*:
  - Callout(Challenge):
  Follow the instructions to create your own Car class.
@@ -90,7 +117,30 @@ class Square : NamedShapeClass {
  - Add an instance of Toyota called toyota. Initialize it.
  - Add the drive() method to make sure it prints out "Prius"
  */
+class Car {
+    var model:String = ""
+    
+    init(model:String) {
+        self.model = model
+    }
+    
+    func drive() {
+        print("You're driving a \(model)")
+    }
+}
 
+
+class Toyota: Car {
+    init() {
+        super.init(model:"")
+        self.model = "Prius"
+    }
+}
+
+var nissan = Car(model:"Rogue")
+nissan.drive()
+var toyota = Toyota()
+toyota.drive()
 
 
 /*:
@@ -102,7 +152,13 @@ First, create a Person class with a name property and a custom initializer that 
 Now create the same Person class but convert it to a struct. Uncomment 'Section B'. What do think will happen? What are the results?
 */
 // Implement Person class under here!
-
+//class Person {
+//    var name = ""
+//
+//    init(name:String) {
+//        self.name = name
+//    }
+//}
 
 // Section A
 //var firstPersonObject = Person(name: "Joe")
@@ -112,17 +168,28 @@ Now create the same Person class but convert it to a struct. Uncomment 'Section 
 //print(firstPersonObject.name)
 //print(secondPersonObject.name)
 
+// Since a class is a pointer type, when you reassign a property all objects pointing at the original object will update to that property
+
+
 
 // Implement Person struct under here!
-
+struct Person {
+    var name = ""
+    
+    init(name:String) {
+        self.name = name
+    }
+}
 
 // Section B
-//var firstPersonStruct = Person(name: "Joe")
-//var secondPersonStruct = firstPersonStruct
-//secondPersonStruct.name = "Jane"
-//
-//print(firstPersonStruct.name)
-//print(secondPersonStruct.name)
+var firstPersonStruct = Person(name: "Joe")
+var secondPersonStruct = firstPersonStruct
+secondPersonStruct.name = "Jane"
+
+print(firstPersonStruct.name)
+print(secondPersonStruct.name)
+
+// Since a struct is a value type, each object that points at it copies it once and thus when the property changes it only changes for the current object pointing at it
 
 
 //: [Next](@next)
