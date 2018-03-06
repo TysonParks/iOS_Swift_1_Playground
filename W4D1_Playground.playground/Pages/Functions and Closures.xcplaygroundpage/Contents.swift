@@ -151,17 +151,40 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  - Experiment:
  Try calling all of the closures above. What do you notice that is different from calling a function?
  */
-
+sayHelloClosure()
+sayHelloClosureToPerson("John")
+print(sayHelloClosureWithReturn("Wanda"))
 /*:
  - Experiment:
  Try creating your own closure that accepts two parameters of any type you choose. Have the closure print out the two parameters and test your closure.
  */
+var bringsAllTheBoysToThe = { (thing: String, place:String) -> () in
+    print("My \(thing) brings all the boys to the \(place).")
+}
 
+bringsAllTheBoysToThe("thermos", "mountains")
+bringsAllTheBoysToThe("methods", "commandline")
 /*:
  - Experiment:
  Declare a variable with an explicit closure type: `(String) -> (String)`. This closure type says it takes one parameter of type String and returns a variable of type String.
  */
+var yellMyName = { (name:String) -> (String) in
+    return name.uppercased()
+}
 
+print(yellMyName("camelCase"))
+
+
+
+var switchBack = { (truth:Bool) -> (Bool) in
+    if truth == true {
+        return false
+    } else {
+        return true
+    }
+}
+switchBack(false)
+switchBack(true)
 /*:
  - Callout(Challenge):
  Create a closure with at least two parameters of your choice and decide whether or not it returns anything. Then create a function that takes in your closure as a parameter and one additional parameter of your choice.
