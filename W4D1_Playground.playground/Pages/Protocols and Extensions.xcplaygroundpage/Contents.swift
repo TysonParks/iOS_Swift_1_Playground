@@ -9,6 +9,7 @@
 protocol ShapeProtocol {
     var numberOfSides: Int { get set }
     func shapeDescription()
+    func area() -> Int
 }
 
 /*:
@@ -16,7 +17,7 @@ protocol ShapeProtocol {
  */
 class Square: ShapeProtocol {
     var numberOfSides: Int
-    
+    var lengthOfSides = 2
     init(){
         self.numberOfSides = 4
     }
@@ -25,13 +26,18 @@ class Square: ShapeProtocol {
         
         print("This is a square")
     }
+    
+    func area() -> Int {
+        return (lengthOfSides * lengthOfSides)
+    }
 }
 
 /*:
  - Experiment:
  Add a new function in our 'ShapeProtocol' that should calculate the area of its shape. Make sure you implement it in our 'Square' class as well.
  */
-
+let newSquare = Square()
+newSquare.area()
 /*:
  - Experiment:
  Add a new property in our 'ShapeProtocol' of type String that indicates the colour of this shape.
