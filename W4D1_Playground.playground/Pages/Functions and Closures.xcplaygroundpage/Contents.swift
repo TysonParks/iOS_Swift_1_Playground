@@ -42,23 +42,57 @@ func sayHello(toPerson: String) -> String{
  - Experiment:
  Try calling all of the functions above. They all have the same function name, but the compiler doesn't complain. Can you think of why this might be?
  */
-
+sayHello()
+//let hi = sayHello(toPerson: "Donna")
+//sayHello(toPerson: <#T##String#>)
+// The compiler DOES COMPLAIN. Thanks for confusing me guys!
 /*:
  - Experiment:
  Try creating your own function that accepts two parameters of any type you choose. Have the function print out the two parameters and test your function.
  */
-
+func addTheseNumbers(int1:Int, int2:Int) {
+    print(int1 + int2)
+}
+addTheseNumbers(int1: 5, int2: 7)
 /*:
  - Callout(Challenge):
  Create four separate functions to add, subtract, multiple, and divide with two parameters given to it and returns a number result. Try testing each one afterwards.
  
  */
+func addSomeNumbers(int1:Int, int2:Int) {
+    print(int1 + int2)
+}
+func subtractSomeNumbers(int1:Int, int2:Int) {
+    print(int1 - int2)
+}
+func multiplySomeNumbers(int1:Int, int2:Int) {
+    print(int1 * int2)
+}
+func divideSomeNumbers(int1:Int, int2:Int) {
+    print(int1 / int2)
+}
 
+let numberOne = 12
+let numberTwo = 5
+
+addSomeNumbers(int1: numberOne, int2: numberTwo)
+subtractSomeNumbers(int1: numberOne, int2: numberTwo)
+multiplySomeNumbers(int1: numberOne, int2: numberTwo)
+divideSomeNumbers(int1: numberOne, int2: numberTwo)
 /*:
  - Callout(Challenge):
  Create your own 'reverse' function that takes in an array of Int, reverses the order of the array, and returns the newly reversed array of Int. The array class has its own 'reverse' method, but do not use it for this challenge.
  */
+func reverseArray(InputArray:[Int]) -> [Int] {
+    var reversedArray:[Int] = []
+    for (index, _) in InputArray.enumerated() {
+        reversedArray.append(InputArray[InputArray.count - 1 - index])
+    }
+    return reversedArray
+}
 
+var numberArray: [Int] = [4, 8, 2, 9, 3, 12, 0, 4, 7]
+reverseArray(InputArray: numberArray)
 /*:
  ## Closures
  
